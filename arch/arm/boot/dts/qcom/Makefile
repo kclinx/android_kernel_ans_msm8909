@@ -28,7 +28,58 @@ dtb-$(CONFIG_ARCH_MSM8974) += msm8974-v1-cdp.dtb \
 	msm8974pro-ac-pm8941-liquid.dtb \
 	msm8974pro-ac-pm8941-mtp.dtb \
 	msm8974pro-ac-pma8084-pm8941-mtp.dtb
-dtb-$(CONFIG_ARCH_MSM8909) += msm8909-sim.dtb \
+
+dtb-$(CONFIG_ARCH_MSM8909) += 01_dtbdump_MSM8909-PM8909_Simulator.dtb \
+    02_dtbdump_MSM8909-PM8909_RUMI.dtb \
+    03_dtbdump_MSM8909_QRD_SKUA.dtb \
+    04_dtbdump_MSM8909_QRD_SKUC.dtb \
+    05_dtbdump_MSM8909_QRD_SKUE.dtb \
+    06_dtbdump_MSM8909-PM8909_CDP.dtb \
+    07_dtbdump_MSM8909-PM8909_MTP.dtb \
+    08_dtbdump_MSM8909-PM8909_SMB1360_1GB_MTP.dtb \
+    09_dtbdump_MSM8909-PM8916_SMB1360_1GB_MTP.dtb \
+    10_dtbdump_MSM8909-PM8909_SMB1360_512MB_MTP.dtb \
+    11_dtbdump_MSM8909-PM8909_1GB_QRD_SKUA.dtb \
+    12_dtbdump_MSM8909_QRD_SKUC.dtb \
+    13_dtbdump_MSM8909_QRD_SKUE.dtb \
+    14_dtbdump_MSM8909-PM8909_1GB_CDP.dtb \
+    15_dtbdump_MSM8909-PM8909_1GB_MTP.dtb \
+    16_dtbdump_MSM8909-PM8909_1GB_RCM.dtb \
+    17_dtbdump_MSM8909-PM8916_1GB_RCM.dtb \
+    18_dtbdump_MSM8909-PM8916_1GB_MTP.dtb \
+    19_dtbdump_MSM8909-PM8916_1GB_CDP.dtb \
+    20_dtbdump_MSM8909-PM8909_QHD_CDP.dtb \
+    21_dtbdump_MSM8909-PM8909_QHD_RCM.dtb \
+    22_dtbdump_MSM8909-PM8916_1GB_QHD_RCM.dtb \
+    23_dtbdump_MSM8909-PM8916_512MB_QHD_RCM.dtb \
+    24_dtbdump_MSM8909-PM8916_QRD_SKUT.dtb \
+    25_dtbdump_MSM8909-PM8916_QRD_SKUT.dtb \
+    26_dtbdump_MSM8909-PM8916_QSIP_SKUQ.dtb \
+    27_dtbdump_MSM8208_CDP.dtb \
+    28_dtbdump_MSM8208_MTP.dtb \
+    29_dtbdump_MSM8208_1GB_CDP.dtb \
+    30_dtbdump_MSM8208_1GB_MTP.dtb \
+    31_dtbdump_MSM8208_QRD_SKUA.dtb \
+    32_dtbdump_MSM8208_QRD_SKUC.dtb \
+    33_dtbdump_MSM8208_QRD_SKUE.dtb \
+    34_dtbdump_MSM8208_1GB_QRD_SKUA.dtb \
+    35_dtbdump_MSM8208_1GB_QRD_SKUC.dtb \
+    36_dtbdump_MSM8208_1GB_QRD_SKUE.dtb \
+    37_dtbdump_MSM8208_1GB_RCM.dtb \
+    38_dtbdump_MSM8208_QHD_CDP.dtb \
+    39_dtbdump_MSM8208_QHD_RCM.dtb \
+    40_dtbdump_MSM8909W-PM8916_MTP.dtb \
+    41_dtbdump_MSM8909W-PM8916_CDP.dtb \
+    42_dtbdump_APQ8009W-PM8916_MTP.dtb \
+    43_dtbdump_APQ8009W-PM8916_CDP.dtb \
+    44_dtbdump_APQ8009_WCD9326_MTP.dtb \
+    45_dtbdump_MSM8909_WCD9326_MTP.dtb \
+    46_dtbdump_MSM8909_WCD9326_Reference_Board_MTP.dtb \
+    47_dtbdump_MSM8909_WCD9326_512MB_Reference_Board_MTP.dtb \
+    48_dtbdump_APQ8009_WCD9326_Reference_Board_MTP.dtb \
+    49_dtbdump_APQ8009_WCD9326_512MB_Reference_Board_MTP.dtb
+
+dtb-$(CONFIG_ARCH_MSM8909_ALCATEL) += msm8909-sim.dtb \
 	msm8909-rumi.dtb \
 	msm8909-qrd-skua.dtb \
 	msm8909-qrd-skuc.dtb \
@@ -64,6 +115,7 @@ dtb-$(CONFIG_ARCH_MSM8909) += msm8909-sim.dtb \
 	msm8208-1gb-rcm.dtb \
 	msm8208-qhd-cdp.dtb \
 	msm8208-qhd-rcm.dtb
+
 dtb-$(CONFIG_ARCH_MSM8916) += msm8916-sim.dtb \
 	msm8916-rumi.dtb \
 	msm8916-cdp.dtb \
@@ -155,6 +207,7 @@ dtb-$(CONFIG_ARCH_MSM8226) += msm8226-sim.dtb \
 	apq8026-v2-720p-mtp.dtb \
 	apq8026-v2-320p-w-mtp.dtb \
 	apq8026-v2-1080p-mtp.dtb
+
 dtb-$(CONFIG_ARCH_MSM8610) += msm8610-rumi.dtb \
 	msm8610-v1-cdp.dtb \
 	msm8610-v2-cdp.dtb \
