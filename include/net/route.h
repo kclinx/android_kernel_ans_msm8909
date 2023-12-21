@@ -27,7 +27,6 @@
 #include <net/dst.h>
 #include <net/inetpeer.h>
 #include <net/flow.h>
-#include <net/sock.h>
 #include <net/inet_sock.h>
 #include <linux/in_route.h>
 #include <linux/rtnetlink.h>
@@ -36,7 +35,6 @@
 #include <linux/ip.h>
 #include <linux/cache.h>
 #include <linux/security.h>
-#include <linux/types.h>
 #include <linux/uidgid.h>
 
 #define RTO_ONLINK	0x01
@@ -137,33 +135,16 @@ static inline struct rtable *ip_route_output(struct net *net, __be32 daddr,
 	return ip_route_output_key(net, &fl4);
 }
 
-static void bzero_kclinx(unsigned char *s, unsigned long l) {
-	unsigned long i=0;
-	for(; i<l; i++) s[i] = 0;
-}
-
 static inline struct rtable *ip_route_output_ports(struct net *net, struct flowi4 *fl4,
 						   struct sock *sk,
 						   __be32 daddr, __be32 saddr,
 						   __be16 dport, __be16 sport,
 						   __u8 proto, __u8 tos, int oif)
 {
-	/*flowi4_init_output(fl4, oif, sk ? sk->sk_mark : 0, tos,
+	flowi4_init_output(fl4, oif, sk ? sk->sk_mark : 0, tos,
 			   RT_SCOPE_UNIVERSE, proto,
 			   sk ? inet_sk_flowi_flags(sk) : 0,
-			   daddr, saddr, dport, sport, sk ? sock_i_uid(sk) : 0);*/
-	// kclinx - get rid of conditionals, modify so that it compiles :/
-	// this is a hacky fix, but it builds
-	kuid_t Zero;
-	bzero_kclinx((unsigned char*)&Zero, sizeof(kuid_t));
-
-	if(sk)
-		flowi4_init_output(fl4, oif, sk->sk_mark, tos,
-			RT_SCOPE_UNIVERSE, proto, inet_sk_flowi_flags(sk),
-			daddr, saddr, dport, sport, sock_i_uid(sk));
-	else 
-		flowi4_init_output(fl4, oif, 0, tos, RT_SCOPE_UNIVERSE, proto, 0, daddr, saddr, dport, sport, Zero);
-
+			   daddr, saddr, dport, sport, sk ? __kuid_val(sock_i_uid(sk)) : 0);
 	if (sk)
 		security_sk_classify_flow(sk, flowi4_to_flowi(fl4));
 	return ip_route_output_flow(net, fl4, sk);
@@ -275,7 +256,7 @@ static inline void ip_route_connect_init(struct flowi4 *fl4, __be32 dst, __be32 
 
 	flowi4_init_output(fl4, oif, sk->sk_mark, tos, RT_SCOPE_UNIVERSE,
 			   protocol, flow_flags, dst, src, dport, sport,
-			   sock_i_uid(sk));
+			   __kuid_val(sock_i_uid(sk)));
 }
 
 static inline struct rtable *ip_route_connect(struct flowi4 *fl4,
